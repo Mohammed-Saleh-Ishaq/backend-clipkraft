@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y ffmpeg build-essential git && rm -rf /v
 
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && pip show uvicorn
 
 # Copy the entire app directory into the container
 #COPY ./app ./app
@@ -21,4 +21,5 @@ COPY app/ ./app
 # Start the FastAPI app
 #CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 #CMD ["sh", "-c", "python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT"]
-CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["pip", "list"]
