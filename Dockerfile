@@ -12,7 +12,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire app directory into the container
 #COPY ./app ./app
-COPY . .
+#COPY . .
+COPY app/ ./app
+
 # Run the app as a module so relative imports work
 #CMD ["python", "-m", "main"]
 
