@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+app/media/
+.env
+.git
+*.pyc
+*.pyo
+*.pyd
+
+__pycache__/
+media/
+*.mp4
+*.vtt
+*.log
+.env
+.git

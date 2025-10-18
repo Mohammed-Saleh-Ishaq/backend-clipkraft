@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 # Load whisper model at startup (small/base recommended for MVP)
-MODEL = whisper.load_model("small")
+MODEL = whisper.load_model("tiny")
 
 # Upload video endpoint
 @app.post("/upload")

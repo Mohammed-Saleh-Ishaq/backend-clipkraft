@@ -18,3 +18,10 @@ app/media/
 *.pyc
 *.pyo
 *.pyd
+
+media/
+__pycache__/
+*.mp4
+*.vtt
+.git
+*.log
