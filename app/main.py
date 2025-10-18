@@ -24,6 +24,10 @@ app.add_middleware(
 
 # Load whisper model at startup (small/base recommended for MVP)
 MODEL = whisper.load_model("tiny")
+#testing 
+@app.get("/")
+def read_root():
+    return {"message": "Backend is running!"}
 
 # Upload video endpoint
 @app.post("/upload")
