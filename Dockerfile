@@ -2,19 +2,44 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Install system dependencies (ffmpeg and build tools for compilation if needed)
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    build-essential \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy the requirements.txt and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt --verbose
+
+# Copy the app code into the container
+COPY app/ ./app
+
+# Set default environment variable for PORT (if not provided)
+ENV PORT=8000
+
+# Run the app using uvicorn
+ENTRYPOINT ["python"]
+CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+
+
+####FROM python:3.11-slim
+
+######WORKDIR /app
+
 #RUN apt-get update && apt-get install -y ffmpeg build-essential git python3-pip && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y ffmpeg && apt-get clean && rm -rf /var/lib/apt/lists/*
+######RUN apt-get update && apt-get install -y ffmpeg && apt-get clean && rm -rf /var/lib/apt/lists/*
 ##RUN apt-get update && apt-get install -y ffmpeg libavcodec-extra && apt-get clean && rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && apt-get install -y ffmpeg libav-tools libavcodec-extra && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+#####COPY requirements.txt .
+#####RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ ./app
+#####COPY app/ ./app
 
-ENTRYPOINT ["python"]
+#####ENTRYPOINT ["python"]
 ##CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+#####CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
 
 
 ##FROM python:3.11-slim
