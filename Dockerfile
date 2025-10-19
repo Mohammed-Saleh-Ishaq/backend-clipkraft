@@ -11,7 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ ./app
 
 ENTRYPOINT ["python"]
-CMD ["-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+##CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
 
 
 ##FROM python:3.11-slim
