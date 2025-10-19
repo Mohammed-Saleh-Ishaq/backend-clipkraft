@@ -132,3 +132,11 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
+
+import subprocess
+
+try:
+    out = subprocess.check_output(["ffprobe", "-version"]).decode()
+    print("✅ ffprobe is installed:\n", out)
+except Exception as e:
+    print("❌ ffprobe check failed:", e)

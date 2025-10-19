@@ -1,2 +1,3 @@
 [build]
-packages = ["ffmpeg"]
+nixpkgs = "nixos-23.05"
+packages = ["ffmpeg-full"]
