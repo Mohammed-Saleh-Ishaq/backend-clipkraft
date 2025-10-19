@@ -16,7 +16,7 @@ app = FastAPI()
 # CORS middleware to allow cross-origin requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins, change for production use
+    allow_origins=["https://clipcraft.up.railway.app/"],  # Allows all origins, change for production use
     allow_credentials=True,
     allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
