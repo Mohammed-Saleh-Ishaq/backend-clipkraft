@@ -8,9 +8,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements.txt and install Python dependencies
+# Copy the requirements.txt and install Python dependencies with verbose logging
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt --verbose
+RUN pip install --no-cache-dir -r requirements.txt --verbose 2>&1 | tee /install.log
 
 # Copy the app code into the container
 COPY app/ ./app
