@@ -1,2 +1,0 @@
-[build]
-nixConfigPath = ".nixpacks/nixpkgs.nix"
